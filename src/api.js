@@ -1,6 +1,9 @@
 import express from 'express';
+import morgan from 'morgan';
 
 let app = express();
+
+app.use(morgan('dev'));
 
 app.all('/api/hello-method', (req, res) => {
 	res.json({
