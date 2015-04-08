@@ -21,7 +21,7 @@ export default function request(obj = {}) {
 		}
 	}
 
-	console.log(`${chalk.blue((options.method || 'GET').toUpperCase())} ${chalk.blue(options.url)}`);
+	// console.log(`${chalk.blue((options.method || 'GET').toUpperCase())} ${chalk.blue(options.url)}`);
 
 	return rp(_.defaults(options, {method: 'GET'}, DEFAULTS));
 }

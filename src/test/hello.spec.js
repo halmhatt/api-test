@@ -31,3 +31,17 @@ describe('POST /api/hello-method', function () {
 		done();
 	});
 });
+
+describe('Multiple requests', function () {
+	it('should GET /api/hello-method and then POST same url', async function (done) {
+		var {statusCode, body} = await request.get(`${BASE_URL}/api/hello-method`);
+
+		expect(statusCode).toBe(200);
+		expect(body.hello).toBe('GET');
+
+		var {statusCode, body} = await request.post(`${BASE_URL}/api/hello-method`);
+		expect(statusCode).toBe(200);
+		expect(body.hello).toBe('POST');
+		done();
+	});
+});
