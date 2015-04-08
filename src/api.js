@@ -2,14 +2,10 @@ import express from 'express';
 
 let app = express();
 
-app.get('/api/hello', (req, res) => {
+app.all('/api/hello-method', (req, res) => {
 	res.json({
-		hello: 'moto'
+		hello: req.method
 	});
-});
-
-app.get('/api/echo', (req, res) => {
-	res.json(req.data);
 });
 
 let server = app.listen(3000, () => {

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run build && jasmine-node build/test/*.spec.js",
     "build": "babel --stage 0 --out-dir build src",
-    "server": "npm run build && node build/api.js"
+    "start": "npm run build && node build/api.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,10 @@
   "homepage": "https://github.com/halmhatt/api-test",
   "devDependencies": {
     "babel": "^5.0.9",
+    "chalk": "^1.0.0",
     "jasmine-node": "^1.14.5",
     "json-promise": "^1.1.8",
+    "lodash": "^3.6.0",
     "request-promise": "^0.4.1"
   },
   "dependencies": {
