@@ -2,6 +2,8 @@ import rp from 'request-promise';
 import _ from 'lodash';
 import chalk from 'chalk';
 
+var baseUrl = '';
+
 const DEFAULTS = {
 	resolveWithFullResponse: true,
 	transform: function (body, response) {
@@ -19,6 +21,10 @@ export default function request(obj = {}) {
 		options = {
 			url: obj
 		}
+	}
+
+	if (options.url) {
+		options.url = `${baseUrl}${options.url}`;
 	}
 
 	// console.log(`${chalk.blue((options.method || 'GET').toUpperCase())} ${chalk.blue(options.url)}`);
@@ -40,6 +46,11 @@ export function post(url, data) {
 		});
 }
 
+export function setBaseUrl(url) {
+	baseUrl = url;
+}
+
 // Named 
 request.get = get;
 request.post = post;
+request.setBaseUrl = setBaseUrl;

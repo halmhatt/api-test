@@ -22,7 +22,6 @@
     "babel": "^5.0.9",
     "chalk": "^1.0.0",
     "jasmine-node": "^1.14.5",
-    "json-promise": "^1.1.8",
     "lodash": "^3.6.0",
     "request-promise": "^0.4.1"
   },

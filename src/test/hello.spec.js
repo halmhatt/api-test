@@ -1,11 +1,10 @@
 import request from '../lib/req';
-import jsonPromise from 'json-promise';
 import 'babel/polyfill';
 
-const BASE_URL = 'http://localhost:3000';
+request.setBaseUrl('http://localhost:3000');
 
 describe('GET /api/hello-method', function () {
-	let req = request.get(`${BASE_URL}/api/hello-method`);
+	let req = request.get(`/api/hello-method`);
 
 	it('should have hello', async function (done) {
 		let {body, statusCode, headers} = await req;
@@ -21,7 +20,7 @@ describe('GET /api/hello-method', function () {
 });
 
 describe('POST /api/hello-method', function () {
-	let req = request.post(`${BASE_URL}/api/hello-method`);
+	let req = request.post(`/api/hello-method`);
 
 	it('should respond with hello POST', async function (done) {
 		let {body} = await req;
@@ -34,12 +33,12 @@ describe('POST /api/hello-method', function () {
 
 describe('Multiple requests', function () {
 	it('should GET /api/hello-method and then POST same url', async function (done) {
-		var {statusCode, body} = await request.get(`${BASE_URL}/api/hello-method`);
+		var {statusCode, body} = await request.get(`/api/hello-method`);
 
 		expect(statusCode).toBe(200);
 		expect(body.hello).toBe('GET');
 
-		var {statusCode, body} = await request.post(`${BASE_URL}/api/hello-method`);
+		var {statusCode, body} = await request.post(`/api/hello-method`);
 		expect(statusCode).toBe(200);
 		expect(body.hello).toBe('POST');
 		done();
